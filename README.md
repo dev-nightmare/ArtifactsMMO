@@ -111,15 +111,15 @@ import threading
 
 
 def do_something_else(game:Game, account:MyAccount, character:MyCharacter, param1:str, param2:str):
-    # your code
+    print(character.name, do_something_else.__name__)
 
 
 def do_something_else2(game:Game, account:MyAccount, character:MyCharacter):
-    # your code
+    print(character.name, do_something_else2.__name__)
 
 
 def learn_resource_skill(game:Game, account:MyAccount, character:MyCharacter, skill:Skill):
-    # your code
+    print(character.name, learn_resource_skill.__name__)
 
 
 def main():
