@@ -1,6 +1,6 @@
-from libs import *
-from utils import MyRequest
-from enums import Sort, ContentType, Type, CraftSkill, Skill, Skin, Slot
+from .libs import *
+from .utils import MyRequest
+from .enums import Sort, ContentType, Type, CraftSkill, Skill, Skin, Slot
 
 
 BASE_URL = "https://api.artifactsmmo.com"

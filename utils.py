@@ -1,4 +1,4 @@
-from libs import *
+from .libs import *
 from requests.exceptions import JSONDecodeError
 
 class MyRequest:
