@@ -8,6 +8,7 @@ Simplifies sending requests and receiving responses from the game server. Handle
 
 ## Installation
 
+Python 3.10+
 ```sh
 cd <path to your project>
 git clone https://github.com/dev-nightmare/ArtifactsMMO
@@ -22,13 +23,13 @@ You will find more detailed information in the description of the methods.
 
 ```python
 - enums.py
-  - Sort
-  - ContentType
-  - Type
-  - CraftSkill
-  - Skill
-  - Skin
-  - Slot
+  - Sort            #Needs for method 'get_all_characters' in class 'Game'
+  - ContentType     #Needs for method 'get_all_maps' in class 'Game'
+  - Type            #Needs for method 'get_all_items' in class 'Game'
+  - CraftSkill      #Needs for method 'get_all_items' in class 'Game'
+  - Skill           #Needs for method 'get_all_resources' in class 'Game'
+  - Skin            #Needs for method 'create_character' in class 'MyAccount'
+  - Slot            #Needs for methods 'equip' and 'unequip' in class 'MyCharacter'
 
 - api.py
   - Client # Simple interface for combining classes: MyCharacter, MyAccount, Game
