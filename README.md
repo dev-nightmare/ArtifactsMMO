@@ -34,13 +34,13 @@ You will find more detailed information in the description of the methods.
 
 - api.py
     # Simple interface for classes: MyCharacter, MyAccount, Game
-  - Client(token: str=None, cooldown_handler: bool=True,
-           errors_handler: bool=True, request_attempts: int=3)
+  - Client(token:str=None, cooldown_handler:bool=True,
+           errors_handler:bool=True, request_attempts:int=3)
     - static generate_token(username:str, password:str, errors_handler:bool=True,
                             request_attempts:int=3) -> json
 
-  - MyCharacter(token:str, name:str, cooldown_handler:bool=True, errors_handler:bool=True,
-                request_attempts:int=3)
+  - MyCharacter(token:str, name:str, cooldown_handler:bool=True,
+                errors_handler:bool=True, request_attempts:int=3)
     - move(x:int, y:int) -> json
     - equip(code:str, slot:Slot) -> json
     - unequip(slot:Slot) -> json
