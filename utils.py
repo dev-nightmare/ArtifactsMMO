@@ -13,9 +13,11 @@ class MyRequest:
             self.__headers["Authorization"] = authorization
 
     def __errors(func):
+
         """Use in classes only for methods. A parameter '_errors_handler' (type bool) in your class
         control the state of this decorator. If _errors_handler == False -> return func
         with no errors handling."""
+        
         @wraps(func)
         def wrapper(*args, **kwargs):
             data = func(*args, **kwargs)

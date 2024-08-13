@@ -2,6 +2,9 @@ from enum import Enum
 
 
 class Sort(Enum):
+    
+    """Needs for method 'get_all_characters' in class 'Game'"""
+
     WOODCUTTING = "woodcutting"
     MINING = "mining"
     FISHING = "fishing"
@@ -14,6 +17,9 @@ class Sort(Enum):
 
 
 class ContentType(Enum):
+
+    """Needs for method 'get_all_maps' in class 'Game'"""
+
     MONSTER = "monster"
     RESOURCE = "resource"
     WORKSHOP = "workshop"
@@ -24,6 +30,9 @@ class ContentType(Enum):
 
 
 class Type(Enum):
+
+    """Needs for method 'get_all_items' in class 'Game'"""
+
     CONSUMABLE = "consumable"
     BODY_ARMOR = "body_armor"
     WEAPON = "weapon"
@@ -38,6 +47,9 @@ class Type(Enum):
 
 
 class CraftSkill(Enum):
+
+    """Needs for method 'get_all_items' in class 'Game'"""
+
     WEAPONCRAFTING = "weaponcrafting"
     GEARCRAFTING = "gearcrafting"
     JEWELRYCRAFTING = "jewelrycrafting"
@@ -48,6 +60,9 @@ class CraftSkill(Enum):
 
 
 class Skill(Enum):
+
+    """Needs for method 'get_all_resources' in class 'Game'"""
+
     MINING = "mining"
     WOODCUTTING = "woodcutting"
     FISHING = "fishing"
@@ -55,6 +70,9 @@ class Skill(Enum):
 
 
 class Skin(Enum):
+
+    """Needs for method 'create_character' in class 'MyAccount'"""
+
     MEN1 = "men1"
     MEN2 = "men2"
     MEN3 = "men3"
@@ -64,6 +82,9 @@ class Skin(Enum):
 
 
 class Slot(Enum):
+
+    """Needs for methods 'equip' and 'unequip' in class 'MyCharacter'"""
+
     WEAPON = "weapon"
     SHIELD = "shield"
     HELMET = "helmet"
