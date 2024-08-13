@@ -11,7 +11,7 @@ Simplifies sending requests and receiving responses from the game server. Handle
 ```sh
 cd <path to your project>
 git clone https://github.com/dev-nightmare/ArtifactsMMO
-pip install -r APIArtifactsMMO\\requirements.txt
+pip install -r ArtifactsMMO\\requirements.txt
 ```
 
 ## Usage
