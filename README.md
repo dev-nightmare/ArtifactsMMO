@@ -23,20 +23,22 @@ You will find more detailed information in the description of the methods.
 
 ```python
 - enums.py
-  - Sort            #Needs for method 'get_all_characters' in class 'Game'
-  - ContentType     #Needs for method 'get_all_maps' in class 'Game'
-  - Type            #Needs for method 'get_all_items' in class 'Game'
-  - CraftSkill      #Needs for method 'get_all_items' in class 'Game'
-  - Skill           #Needs for method 'get_all_resources' in class 'Game'
-  - Skin            #Needs for method 'create_character' in class 'MyAccount'
-  - Slot            #Needs for methods 'equip' and 'unequip' in class 'MyCharacter'
+  - Sort            # Needs for method 'get_all_characters' in class 'Game'
+  - ContentType     # Needs for method 'get_all_maps' in class 'Game'
+  - Type            # Needs for method 'get_all_items' in class 'Game'
+  - CraftSkill      # Needs for method 'get_all_items' in class 'Game'
+  - Skill           # Needs for method 'get_all_resources' in class 'Game'
+  - Skin            # Needs for method 'create_character' in class 'MyAccount'
+  - Slot            # Needs for methods 'equip' and 'unequip' in class 'MyCharacter'
+
 
 - api.py
-  - Client # Simple interface for combining classes: MyCharacter, MyAccount, Game
+  - Client(token: str=None, cooldown_handler: bool=True,
+           errors_handler: bool=True, request_attempts: int=3) # Simple interface for classes: MyCharacter, MyAccount, Game
     - static generate_token(username:str, password:str, errors_handler:bool=True, request_attempts:int=3) -> json
 
-  - MyCharacter
-    - python move(x:int, y:int) -> json
+  - MyCharacter(token:str, name:str, cooldown_handler:bool=True, errors_handler:bool=True, request_attempts:int=3)
+    - move(x:int, y:int) -> json
     - equip(code:str, slot:Slot) -> json
     - unequip(slot:Slot) -> json
     - fight() -> json
@@ -54,7 +56,7 @@ You will find more detailed information in the description of the methods.
     - exchange_task() -> json
     - delete_item(code:str, quantity:int) -> json
 
-  - MyAccount
+  - MyAccount(token:str, errors_handler:bool=True, request_attempts:int=3)
     - get_my_characters() -> json
     - get_bank_items(item_code:str=None, page:int=None, size:int=None) -> json
     - get_bank_golds() -> json
@@ -62,7 +64,7 @@ You will find more detailed information in the description of the methods.
     - create_character(name:str, skin:Skin) -> json
     - delete_character(name:str) -> json
 
-  - Game
+  - Game(errors_handler:bool=True, request_attempts:int=3)
     - get_status() -> json
     - get_all_characters(page:int=None, size:int=None, sort:Sort=Sort.DEFAULT) -> json
     - get_character(name:str) -> json
@@ -80,7 +82,7 @@ You will find more detailed information in the description of the methods.
     - get_all_events(page:int=None, size:int=None) -> json
     - get_all_ge_items(page:int=None, size:int=None) -> json
     - get_ge_item(code:str) -> json
-    - create_account(self, username:str, password:str, email:str) -> json
+    - create_account(username:str, password:str, email:str) -> json
 ```
 
 ### Example
@@ -88,7 +90,7 @@ You will find more detailed information in the description of the methods.
 ```python
 from ArtifactsMMO.api import Client
 
-client = Client(TOKEN)
+client = Client("token")
 print(client.game.get_status())
 print(client.characters[0].move(3, 5))
 print(client.account.get_my_characters())
@@ -103,18 +105,26 @@ from ArtifactsMMO.enums import *
 import threading
 
 
+def do_something_else(game:Game, account:MyAccount, character:MyCharacter, param1:str, param2:str):
+    # your code
+
+
+def do_something_else2(game:Game, account:MyAccount, character:MyCharacter):
+    # your code
+
+
 def learn_resource_skill(game:Game, account:MyAccount, character:MyCharacter, skill:Skill):
-    pass
+    # your code
 
 
 def main():
     threads = []
     work = {
-        "Prototype-0": [learn_resource_skill, Skill.WOODCUTTING],
+        "Prototype-0": [learn_resource_skill, Skill.MINING],
         "Prototype-1": [learn_resource_skill, Skill.WOODCUTTING],
-        "Prototype-2": [learn_resource_skill, Skill.WOODCUTTING],
-        "Prototype-3": [learn_resource_skill, Skill.WOODCUTTING],
-        "Prototype-4": [learn_resource_skill, Skill.WOODCUTTING]
+        "Prototype-2": [learn_resource_skill, Skill.FISHING],
+        "Prototype-3": [do_something_else, "some information1", "some information2"],
+        "Prototype-4": [do_something_else2]
     }
 
     client = Client("token")
