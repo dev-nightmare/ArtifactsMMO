@@ -33,11 +33,14 @@ You will find more detailed information in the description of the methods.
 
 
 - api.py
+    # Simple interface for classes: MyCharacter, MyAccount, Game
   - Client(token: str=None, cooldown_handler: bool=True,
-           errors_handler: bool=True, request_attempts: int=3) # Simple interface for classes: MyCharacter, MyAccount, Game
-    - static generate_token(username:str, password:str, errors_handler:bool=True, request_attempts:int=3) -> json
+           errors_handler: bool=True, request_attempts: int=3)
+    - static generate_token(username:str, password:str, errors_handler:bool=True,
+                            request_attempts:int=3) -> json
 
-  - MyCharacter(token:str, name:str, cooldown_handler:bool=True, errors_handler:bool=True, request_attempts:int=3)
+  - MyCharacter(token:str, name:str, cooldown_handler:bool=True, errors_handler:bool=True,
+                request_attempts:int=3)
     - move(x:int, y:int) -> json
     - equip(code:str, slot:Slot) -> json
     - unequip(slot:Slot) -> json
@@ -68,16 +71,18 @@ You will find more detailed information in the description of the methods.
     - get_status() -> json
     - get_all_characters(page:int=None, size:int=None, sort:Sort=Sort.DEFAULT) -> json
     - get_character(name:str) -> json
-    - get_all_maps(content_code:str=None, content_type:ContentType=ContentType.DEFAULT, page:int=None,
-                   size:int=None) -> json
+    - get_all_maps(content_code:str=None, content_type:ContentType=ContentType.DEFAULT,
+                   page:int=None, size:int=None) -> json
     - get_map(x:int, y:int) -> json
-    - get_all_items(craft_material:str=None, craft_skill:CraftSkill=CraftSkill.DEFAULT, max_level:int=None,
-                    min_level:int=None, name:str=None, page:int=None, size:int=None, _type:Type=Type.DEFAULT) -> json
+    - get_all_items(craft_material:str=None, craft_skill:CraftSkill=CraftSkill.DEFAULT,
+                    max_level:int=None, min_level:int=None, name:str=None, page:int=None,
+                    size:int=None, _type:Type=Type.DEFAULT) -> json
     - get_item(code:str) -> json
-    - get_all_monsters(drop:str=None, max_level:int=None, min_level:int=None, page:int=None, size:int=None) -> json
+    - get_all_monsters(drop:str=None, max_level:int=None, min_level:int=None, page:int=None,
+                       size:int=None) -> json
     - get_monster(code:str) -> json
-    - get_all_resources(drop:str=None, max_level:int=None, min_level:int=None, page:int=None, size:int=None,
-                        skill:Skill=Skill.DEFAULT) -> json
+    - get_all_resources(drop:str=None, max_level:int=None, min_level:int=None, page:int=None,
+                        size:int=None, skill:Skill=Skill.DEFAULT) -> json
     - get_resource(code:str) -> json
     - get_all_events(page:int=None, size:int=None) -> json
     - get_all_ge_items(page:int=None, size:int=None) -> json
@@ -130,8 +135,8 @@ def main():
     client = Client("token")
 
     for index, character in enumerate(client.characters):
-        t = threading.Thread(target=work[character.name][0], name=index, args=(client.game, client.account,
-                             client.characters[index], *work[character.name][1:]))
+        t = threading.Thread(target=work[character.name][0], name=index, args=(client.game,
+                             client.account, client.characters[index], *work[character.name][1:]))
         t.start()
         threads.append(t)
     
