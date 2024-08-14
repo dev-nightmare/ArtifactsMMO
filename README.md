@@ -134,9 +134,9 @@ def main():
 
     client = Client("token")
 
-    for index, character in enumerate(client.characters):
-        t = threading.Thread(target=work[character.name][0], name=index, args=(client.game,
-                             client.account, client.characters[index], *work[character.name][1:]))
+    for character in client.characters:
+        t = threading.Thread(target=work[character.name][0], args=(client.game,
+                             client.account, character, *work[character.name][1:]))
         t.start()
         threads.append(t)
     
