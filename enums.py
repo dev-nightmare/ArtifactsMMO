@@ -14,6 +14,13 @@ class Sort(Enum):
     COOKING = "cooking"
     GOLD = "gold"
     DEFAULT = None
+    
+    @classmethod
+    def _missing_(cls, value):
+        for member in cls:
+            if member.value == value:
+                return member
+        return None
 
 
 class ContentType(Enum):
@@ -27,6 +34,13 @@ class ContentType(Enum):
     GRAND_EXCHANGE = "grand_exchange"
     TASKS_MASTER = "tasks_master"
     DEFAULT = None
+
+    @classmethod
+    def _missing_(cls, value):
+        for member in cls:
+            if member.value == value:
+                return member
+        return None
 
 
 class Type(Enum):
@@ -45,6 +59,13 @@ class Type(Enum):
     RING = "ring"
     DEFAULT = None
 
+    @classmethod
+    def _missing_(cls, value):
+        for member in cls:
+            if member.value == value:
+                return member
+        return None
+
 
 class CraftSkill(Enum):
 
@@ -58,6 +79,13 @@ class CraftSkill(Enum):
     MINING = "mining"
     DEFAULT = None
 
+    @classmethod
+    def _missing_(cls, value):
+        for member in cls:
+            if member.value == value:
+                return member
+        return None
+
 
 class Skill(Enum):
 
@@ -67,6 +95,13 @@ class Skill(Enum):
     WOODCUTTING = "woodcutting"
     FISHING = "fishing"
     DEFAULT = None
+
+    @classmethod
+    def _missing_(cls, value):
+        for member in cls:
+            if member.value == value:
+                return member
+        return None
 
 
 class Skin(Enum):
@@ -79,6 +114,13 @@ class Skin(Enum):
     WOMEN1 = "women1"
     WOMEN2 = "women2"
     WOMEN3 = "women3"
+
+    @classmethod
+    def _missing_(cls, value):
+        for member in cls:
+            if member.value == value:
+                return member
+        return None
 
 
 class Slot(Enum):
@@ -99,3 +141,10 @@ class Slot(Enum):
     ARTIFACT3 = "artifact3"
     CONSUMABLE1 = "consumable1"
     CONSUMABLE2 = "consumable2"
+
+    @classmethod
+    def _missing_(cls, value):
+        for member in cls:
+            if member.value == value:
+                return member
+        return None
